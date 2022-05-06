@@ -22,50 +22,50 @@ export class GildedRose {
 
     for (let i = 0; i < items.length; i++) {
       const itemName = items[i].name;
-      //const itemQuality = items[i].quality;
+      const itemQuality = items[i].quality;
+
+      //Sulfuras does not change in value
+      if (itemName === "Sulfuras, Hand of Ragnaros") continue;
+
       if (
         itemName != "Aged Brie" &&
         itemName != "Backstage passes to a TAFKAL80ETC concert"
       ) {
-        if (items[i].quality > 0) {
-          if (itemName != "Sulfuras, Hand of Ragnaros") {
-            items[i].quality = items[i].quality - 1;
-          }
+        if (itemQuality > 0) {
+          items[i].quality = itemQuality - 1;
         }
       } else {
-        if (items[i].quality < 50) {
-          items[i].quality = items[i].quality + 1;
+        if (itemQuality < 50) {
+          items[i].quality++;
           if (itemName == "Backstage passes to a TAFKAL80ETC concert") {
             if (items[i].sellIn < 11) {
-              if (items[i].quality < 50) {
-                items[i].quality = items[i].quality + 1;
+              if (itemQuality < 50) {
+                items[i].quality++;
               }
             }
             if (items[i].sellIn < 6) {
-              if (items[i].quality < 50) {
-                items[i].quality = items[i].quality + 1;
+              if (itemQuality < 50) {
+                items[i].quality++;
               }
             }
           }
         }
       }
-      if (itemName != "Sulfuras, Hand of Ragnaros") {
-        items[i].sellIn = items[i].sellIn - 1;
-      }
+
+      items[i].sellIn--;
+
       if (items[i].sellIn < 0) {
         if (itemName != "Aged Brie") {
           if (itemName != "Backstage passes to a TAFKAL80ETC concert") {
-            if (items[i].quality > 0) {
-              if (itemName != "Sulfuras, Hand of Ragnaros") {
-                items[i].quality = items[i].quality - 1;
-              }
+            if (itemQuality > 0) {
+              items[i].quality--;
             }
           } else {
             items[i].quality = items[i].quality - items[i].quality;
           }
         } else {
-          if (items[i].quality < 50) {
-            items[i].quality = items[i].quality + 1;
+          if (itemQuality < 50) {
+            items[i].quality++;
           }
         }
       }
