@@ -23,6 +23,7 @@ export class GildedRose {
     for (let i = 0; i < items.length; i++) {
       const itemName = items[i].name;
       const itemQuality = items[i].quality;
+      const itemSellIn = items[i].sellIn;
 
       //Sulfuras does not change in value
       if (itemName === "Sulfuras, Hand of Ragnaros") continue;
