@@ -39,15 +39,12 @@ export class GildedRose {
         if (itemQuality < 50) {
           items[i].quality++;
           if (itemName == "Backstage passes to a TAFKAL80ETC concert") {
-            if (items[i].sellIn < 11) {
-              if (itemQuality < 50) {
-                items[i].quality++;
-              }
+            if (itemSellIn < 50) {
+              items[i].quality++;
             }
-            if (items[i].sellIn < 6) {
-              if (itemQuality < 50) {
-                items[i].quality++;
-              }
+
+            if (itemSellIn < 6 && itemQuality < 50) {
+              items[i].quality++;
             }
           }
         }
